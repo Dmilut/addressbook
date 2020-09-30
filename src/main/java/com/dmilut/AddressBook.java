@@ -3,9 +3,8 @@ package com.dmilut;
 import com.dmilut.service.ContactService;
 import com.dmilut.util.Util;
 
-/* TODO: 9/24/20
-    1. Реализовать метод сортировки контактов по алфавиту, так, чтобы контакты хранились в отсортированном в алфавитном
-    порядке (по фамилии) виде. */
+/* TODO: 9/28/20
+    1. Преобразовать проект AddressBook в maven-проект в вашем отдельном репозитории. */
 public class AddressBook {
 
     private static final ContactService contactService = new ContactService();
