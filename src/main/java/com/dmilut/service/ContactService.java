@@ -12,7 +12,7 @@ public class ContactService {
 
     public void createContact(String firstName, String lastName, long phoneNumber, Address address) {
         if (address == null) {
-            //throw new NullPointerException();
+            throw new NullPointerException();
         }
 
         Contact contact = new Contact(firstName, lastName, phoneNumber, address);
