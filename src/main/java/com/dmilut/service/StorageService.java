@@ -44,4 +44,8 @@ public class StorageService {
         Storage.getContacts().remove(contact);
     }
 
+    public void removeAll() {
+        Storage.getContacts().clear();
+    }
+
 }

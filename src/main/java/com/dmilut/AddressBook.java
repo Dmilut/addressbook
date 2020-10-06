@@ -26,6 +26,7 @@ public class AddressBook {
             System.out.println("print contacts          - вывод в консоль всех контактов ================================");
             System.out.println("search                  - поиск контакта ================================================");
             System.out.println("delete by first name    - удаление контакта =============================================");
+            System.out.println("delete all              - удаление всех контактов =======================================");
             System.out.println("exit                    - выход из программы ============================================");
             System.out.println("=========================================================================================");
             System.out.println("Введите комманду");
@@ -56,6 +57,11 @@ public class AddressBook {
                     String firstName = Util.inputText();
 
                     contactService.deleteContactByFirstName(firstName);
+                }
+                break;
+
+                case "delete all": {
+                    contactService.deleteAll();
                 }
                 break;
 

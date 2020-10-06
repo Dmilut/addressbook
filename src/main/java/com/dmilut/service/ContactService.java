@@ -43,6 +43,10 @@ public class ContactService {
         storageService.removeContact(searchByFirstName(firstName));
     }
 
+    public void deleteAll() {
+        storageService.removeAll();
+    }
+
     public void inputContact() {
 
         System.out.println("Введите имя             ");
