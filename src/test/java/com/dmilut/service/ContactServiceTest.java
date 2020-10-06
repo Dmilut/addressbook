@@ -1,12 +1,12 @@
 package com.dmilut.service;
 
 import com.dmilut.entity.Address;
+import com.dmilut.entity.Contact;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 
 class ContactServiceTest {
 
@@ -17,9 +17,10 @@ class ContactServiceTest {
     private static String firstName;
     private static String lastName;
     private static long phoneNumber;
+    private static Contact contact;
 
     @BeforeAll
-    static void setUp() {
+    public static void setUp() {
         contactService = new ContactService();
         firstName = "TestName1";
         lastName = "TestLastName1";
@@ -31,21 +32,34 @@ class ContactServiceTest {
         String stateName = "TestState1";
         int zipCode = 11111;
         address = new Address(houseNumber, streetName, cityName, stateName, zipCode);
+        contact = new Contact(firstName, lastName, phoneNumber, address);
     }
 
     @Test
-    void createContact_WillBeCreated_WhenArgumentsAreValid() {
+    public void createContact_ContactShouldBeCreated_WhenArgumentsAreValid() {
         contactService.createContact(firstName, lastName, phoneNumber, address);
 
         assertNotNull(contactService.searchByFirstNameOrLastNameOrCityName(firstName));
     }
 
     @Test
-    void createContact_ThrowException_WhenAddressIsNull() {
+    public void createContact_ThrowException_WhenAddressIsNull() {
 
         assertThrows(NullPointerException.class, () -> {
             contactService.createContact(firstName, lastName, phoneNumber, null);
         });
+    }
+
+    @Test
+    public void saveContact_ContactShouldBeSaved_WhenArgumentsAreValid() {
+        contactService.saveContact(contact);
+
+        assertNotNull(contactService.searchByFirstNameOrLastNameOrCityName(firstName));
+    }
+
+    @AfterEach
+    void tearDown() {
+        contactService.deleteAll();
     }
 
 }
