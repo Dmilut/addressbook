@@ -11,6 +11,10 @@ public class ContactService {
     private final StorageService storageService = new StorageService();
 
     public void createContact(String firstName, String lastName, long phoneNumber, Address address) {
+        if (address == null) {
+            //throw new NullPointerException();
+        }
+
         Contact contact = new Contact(firstName, lastName, phoneNumber, address);
 
         saveContact(contact);
