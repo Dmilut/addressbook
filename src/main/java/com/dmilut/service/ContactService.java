@@ -35,7 +35,7 @@ public class ContactService {
     }
 
     public ArrayList<Contact> getAllContacts() {
-        return storageService.getAllContact();
+        return storageService.getAllContacts();
     }
 
     public void deleteContactByFirstName(String firstName) {

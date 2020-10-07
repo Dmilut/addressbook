@@ -14,7 +14,7 @@ public class StorageService {
         Storage.getContacts().sort(new Sorter());
     }
 
-    public ArrayList<Contact> getAllContact() {
+    public ArrayList<Contact> getAllContacts() {
         return Storage.getContacts();
     }
 
