@@ -36,7 +36,7 @@ class ContactServiceTest {
     }
 
     @Test
-    public void createContact_ContactShouldBeCreated_WhenArgumentsAreValid() {
+    public void createContact_ContactShouldBeCreated() {
         contactService.createContact(firstName, lastName, phoneNumber, address);
 
         assertNotNull(contactService.searchByFirstNameOrLastNameOrCityName(firstName));
@@ -51,10 +51,26 @@ class ContactServiceTest {
     }
 
     @Test
-    public void saveContact_ContactShouldBeSaved_WhenArgumentsAreValid() {
+    public void saveContact_ContactShouldBeSaved() {
         contactService.saveContact(contact);
 
         assertNotNull(contactService.searchByFirstNameOrLastNameOrCityName(firstName));
+    }
+
+    @Test
+    public void deleteAll_AllContactsShouldBeDeleted() {
+        contactService.createContact(firstName, lastName, phoneNumber, address);
+        contactService.deleteAll();
+
+        assertTrue(contactService.getAllContacts().isEmpty());
+    }
+
+    @Test
+    public void deleteContactByFirstName_ContactShouldBeDeleted() {
+        contactService.createContact(firstName, lastName, phoneNumber, address);
+        contactService.deleteContactByFirstName(firstName);
+
+        assertTrue(contactService.getAllContacts().isEmpty());
     }
 
     @AfterEach
