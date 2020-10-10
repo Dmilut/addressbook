@@ -11,17 +11,20 @@ public class ContactService {
     private final StorageService storageService = new StorageService();
 
     public void createContact(String firstName, String lastName, long phoneNumber, Address address) {
-        if (address == null) {
+        if (firstName == null || lastName == null) {
             throw new NullPointerException();
+        } else {
+            Contact contact = new Contact(firstName, lastName, phoneNumber, address);
+            saveContact(contact);
         }
-
-        Contact contact = new Contact(firstName, lastName, phoneNumber, address);
-
-        saveContact(contact);
     }
 
     public void saveContact(Contact contact) {
-        storageService.saveContact(contact);
+        if (contact == null) {
+            throw new NullPointerException();
+        } else {
+            storageService.saveContact(contact);
+        }
     }
 
     public Contact searchByFirstNameOrLastNameOrCityName(String searchQuery) {

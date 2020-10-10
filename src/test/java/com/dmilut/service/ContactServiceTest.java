@@ -43,10 +43,18 @@ class ContactServiceTest {
     }
 
     @Test
-    public void createContact_ThrowException_WhenAddressIsNull() {
+    public void createContact_ThrowException_WhenFirstNameIsNull() {
 
         assertThrows(NullPointerException.class, () -> {
-            contactService.createContact(firstName, lastName, phoneNumber, null);
+            contactService.createContact(null, lastName, phoneNumber, address);
+        });
+    }
+
+    @Test
+    public void createContact_ThrowException_WhenLastNameIsNull() {
+
+        assertThrows(NullPointerException.class, () -> {
+            contactService.createContact(firstName, null, phoneNumber, address);
         });
     }
 
